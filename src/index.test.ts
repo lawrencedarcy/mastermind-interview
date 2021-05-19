@@ -1,21 +1,10 @@
-import test from 'ava'
+// USE npm test TO RUN THIS FILE
 
-import { orderPizza } from './index'
+import { mastermind } from './index';
 
-test.before(async t => {
-  console.log('Starting tests!')
-})
+test('Mastermind function returns true', () => {
 
-test('can order a pizza', async t => {
+  const value = mastermind();
 
-  let result = await orderPizza({
-    peppers: false,
-    pineapple: false,
-    bbqSauce: false,
-    cheeseType: 'swiss'
-  })
-
-  t.true(result.message.includes('you ordered a pizza'))
-  t.true(result.message.includes('swiss'))
-
-})
+  expect(value).toBeTruthy;
+});

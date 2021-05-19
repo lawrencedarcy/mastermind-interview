@@ -1,20 +1,21 @@
 #!/usr/bin/env node
 
-import program from 'commander'
+import program from "commander";
+import { mastermind } from "./index";
 
-import { orderPizza } from './index'
- 
+/// To run this file, use: npm run mastermind
+
+// You can pass arguments to your application by running `npm run mastermind -- --your-argument`. 
+
+// Add as many arguments as you like, by adding .option to program object, as seen below.
+
+// program.args gives an array of provided arguments
+
+
 program
   .version('0.1.0')
-  .option('-p, --peppers', 'Add peppers')
-  .option('-P, --pineapple', 'Add pineapple')
-  .option('-b, --bbq-sauce', 'Add bbq sauce')
-  .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
+  .option('-e, --example')
+  .option('-a, --anotherExample')
   .parse(process.argv)
 
-orderPizza({
-  peppers: program.peppers,
-  pineapple: program.pineapple,
-  bbqSauce: program.bbqSauce,
-  cheeseType: program.cheese
-}).then(result => console.log(result.message))
+mastermind(program.args)
